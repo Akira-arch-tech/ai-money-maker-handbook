@@ -1,0 +1,15 @@
+{
+  "name": "qwen-sync-arena",
+  "version": "1.0.0",
+  "private": true,
+  "description": "两位千问眼镜用户实时互动的 3D 同步竞技场 Demo",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "NODE_ENV=production node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "three": "^0.170.0",
+    "ws": "^8.18.0"
+  }
+}

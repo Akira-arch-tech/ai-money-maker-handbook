@@ -1,0 +1,264 @@
+:root {
+  --bg: #0b1020;
+  --panel: #121a2f;
+  --ink: #e8eefc;
+  --muted: #9aa8c7;
+  --line: #24304d;
+  --accent: #3d8bfd;
+  --accent-2: #f0a202;
+  --ok: #3ecf8e;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.panel.lobby {
+  max-width: 440px;
+  margin: 8vh auto;
+  padding: 28px 28px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.brand {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.lobby h1 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 650;
+}
+
+.lead {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.field input,
+.field select {
+  background: #0b1224;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+.primary {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary:hover {
+  filter: brightness(1.08);
+}
+
+.howto {
+  margin: 18px 0 10px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: #6f7d9c;
+  line-height: 1.5;
+}
+
+.game {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#c {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.hud {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hud.top {
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+
+.pill {
+  background: rgba(10, 16, 32, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.pill.score {
+  margin-left: auto;
+}
+
+.glasses-frame {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 86vw);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0.35;
+}
+
+.glasses-frame .lens {
+  flex: 1;
+  height: 100%;
+  border: 2px solid rgba(232, 238, 252, 0.55);
+  border-radius: 18px 18px 28px 28px;
+}
+
+.glasses-frame .bridge {
+  width: 28px;
+  height: 10px;
+  border-top: 2px solid rgba(232, 238, 252, 0.55);
+  border-radius: 8px;
+}
+
+.subtitle {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 148px;
+  max-width: min(640px, 90vw);
+  text-align: center;
+  background: rgba(10, 16, 32, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.voice {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 52px;
+  width: min(720px, 94vw);
+  pointer-events: auto;
+}
+
+.voice-label {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.voice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.voice-row button {
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(18, 26, 47, 0.88);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.voice-row button:hover {
+  border-color: var(--accent);
+}
+
+.voice-row button.accent {
+  background: rgba(240, 162, 2, 0.2);
+  border-color: rgba(240, 162, 2, 0.55);
+}
+
+.log {
+  right: 14px;
+  bottom: 52px;
+  width: min(260px, 40vw);
+  max-height: 160px;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #b7c3de;
+  text-align: right;
+}
+
+.help {
+  left: 14px;
+  bottom: 14px;
+  font-size: 11px;
+  color: #7f8daf;
+  max-width: 50vw;
+}
+
+@media (max-width: 720px) {
+  .log {
+    display: none;
+  }
+  .glasses-frame {
+    display: none;
+  }
+  .subtitle {
+    bottom: 168px;
+  }
+}

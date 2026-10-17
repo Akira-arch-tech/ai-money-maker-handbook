@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>千问镜界对战 · Sync Arena Demo</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="lobby" class="panel lobby">
+      <div class="brand">千问 × Tripo</div>
+      <h1>镜界对战 Sync Arena</h1>
+      <p class="lead">
+        模拟两位<strong>千问 AI 眼镜</strong>用户进入同一 3D
+        空间：实时看见对方位置、语音生成 Tripo 风格物体、抢能量球计分。
+      </p>
+      <label class="field">
+        <span>房间号（两人填一样）</span>
+        <input id="roomCode" value="DEMO" maxlength="8" />
+      </label>
+      <label class="field">
+        <span>你的眼镜型号（展示用）</span>
+        <select id="glasses">
+          <option value="N1">N1（无屏 · 语音为主）</option>
+          <option value="N1 Pro">N1 Pro（眼动 + 虹膜）</option>
+          <option value="S1">S1（有屏 AR）</option>
+          <option value="G1">G1</option>
+        </select>
+      </label>
+      <button id="joinBtn" class="primary">进入共享空间</button>
+      <ol class="howto">
+        <li>本窗口当「眼镜用户 A」</li>
+        <li>再开一个窗口，同一房间号进，当「眼镜用户 B」</li>
+        <li>WASD / 方向键移动 · 下方按钮模拟眼镜语音</li>
+      </ol>
+      <p class="hint">
+        数据流：眼镜输入 → 本机 3D 场景 → WebSocket 房间服务器 → 对方眼镜画面
+      </p>
+    </div>
+
+    <div id="game" class="game hidden">
+      <canvas id="c"></canvas>
+
+      <div class="hud top">
+        <div class="pill" id="youPill">—</div>
+        <div class="pill room" id="roomPill">房间</div>
+        <div class="pill score" id="scorePill">比分 0 : 0</div>
+      </div>
+
+      <div class="hud glasses-frame" aria-hidden="true">
+        <div class="lens left"></div>
+        <div class="bridge"></div>
+        <div class="lens right"></div>
+      </div>
+
+      <div class="hud subtitle" id="subtitle">等待另一位眼镜用户加入…</div>
+
+      <div class="hud voice">
+        <div class="voice-label">模拟眼镜语音指令</div>
+        <div class="voice-row">
+          <button data-cmd="spawn_cube">生成方块货样</button>
+          <button data-cmd="spawn_sphere">生成球体道具</button>
+          <button data-cmd="spawn_cone">生成路锥标记</button>
+          <button data-cmd="spawn_tripo" class="accent">Tripo 数字样</button>
+        </div>
+      </div>
+
+      <div class="hud log" id="log"></div>
+
+      <div class="hud help">
+        WASD 移动 · 鼠标拖动视角 · 走近发光球自动拾取 · 目标：比对方多抢能量球
+      </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/vendor/three/three.module.js",
+          "three/addons/": "/vendor/addons/"
+        }
+      }
+    </script>
+    <script type="module" src="/client.js"></script>
+  </body>
+</html>
