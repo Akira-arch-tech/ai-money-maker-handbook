@@ -138,7 +138,9 @@ wss.on("connection", (ws) => {
       room.players.set(playerId, player);
       room.scores[playerId] = room.scores[playerId] ?? 0;
 
+      const snap = roomSnapshot(room);
       send(ws, {
+        ...snap,
         type: "welcome",
         you: {
           id: player.id,
@@ -146,9 +148,8 @@ wss.on("connection", (ws) => {
           color: player.color,
           glasses: player.glasses,
         },
-        ...roomSnapshot(room),
       });
-      broadcast(room, roomSnapshot(room));
+      broadcast(room, snap);
       return;
     }
 
